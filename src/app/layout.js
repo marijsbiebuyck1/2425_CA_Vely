@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from 'next/font/google';
 import Link from 'next/link';
+import Image from 'next/image';  // Import Image component van Next.js
 
 import './globals.css';
 
@@ -22,10 +23,28 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <nav>
-          <Link href="/">Home</Link>
-          <Link href="/about">About</Link>
-        </nav>
+        <header>
+          {/* Logo boven de navigatie */}
+          <div className="logo-container">
+            <Link href="/">
+              <Image 
+                src="/logo.svg" 
+                alt="Mijn App Logo" 
+                width={230} 
+                height={130} 
+              />
+            </Link>
+          </div>
+
+          {/* Navigatie links */}
+          <nav>
+            <Link href="/account">Account</Link>
+            <Link href="/">Home</Link>
+            <Link href="/about">Likes</Link>
+           
+          </nav>
+        </header>
+
         <main>{children}</main>
       </body>
     </html>

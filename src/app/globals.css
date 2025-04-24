@@ -9,3 +9,42 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
 }
+
+/* globals.css */
+
+header {
+  display: flex;
+  flex-direction: column; /* Zorgt ervoor dat het logo bovenaan komt */
+  justify-content: center; /* Verticaal centreren van het logo */
+  align-items: center; /* Horizontaal centreren van het logo */
+  padding: 10px;
+  padding-bottom: 0px;
+  bottom: 0;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo-container {
+  margin-bottom: 20px; /* Ruimte tussen het logo en de navigatie */
+}
+
+main {
+  min-height: 100vh; /* Zorgt ervoor dat de main sectie altijd minimaal de hoogte van het scherm heeft */
+}
+
+nav {
+  display: flex;
+  justify-content: space-around; /* Verdeel de links gelijkmatig over de breedte */
+  gap: 20px;
+  position: fixed; /* Fixeer de navbar aan de onderkant van het scherm */
+  bottom: 0;
+  width: 100%; /* Maak de navbar zo breed als het scherm */
+  background-color: #fff; /* Achtergrondkleur voor de navbar */
+  border-top: 1px solid #ddd; /* Een lichte rand bovenaan de navbar */
+  padding: 10px 0; /* Padding voor de navbar */
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+}

@@ -4,14 +4,13 @@ import styles from './page.module.css';
 import { useState, useEffect } from 'react';
 import useNetwork from '@/data/network';
 import { getDistance } from '@/helpers/get-distance';
-import Link from 'next/link';
+import StationCard from '@/components/StationCard';
 
 export default function Home() {
-  const [filter, setFilter] = useState('');
   const [location, setLocation] = useState({});
+  const [currentIndex, setCurrentIndex] = useState(0);
   const { network, isLoading, isError } = useNetwork();
 
-  // use effect gebruiken om bv iets op te roepen enkel bij opstart van de app
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -21,9 +20,7 @@ export default function Home() {
             longitude: position.coords.longitude,
           });
         },
-        (error) => {
-          console.error(error);
-        }
+        (error) => console.error(error)
       );
     } else {
       console.error('Geolocation is not supported by this browser.');
@@ -31,41 +28,44 @@ export default function Home() {
   }, []);
 
   if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error</div>;
+  if (isError) return <div>Error loading data</div>;
 
-  const stations = network.stations.filter(
-    (station) => station.name.toLowerCase().indexOf(filter.toLowerCase()) >= 0
-  );
+  if (!location.latitude || !location.longitude) return <div>Locatie ophalen...</div>;
 
-  // map stations to add disrance to current location
-  stations.map((station) => {
-    station.distance =
-      getDistance(
-        location.latitude,
-        location.longitude,
-        station.latitude,
-        station.longitude
-      ).distance / 1000;
-  });
+  const stations = network.stations
+    .map((station) => {
+      station.distance =
+        getDistance(location.latitude, location.longitude, station.latitude, station.longitude).distance / 1000;
+      return station;
+    })
+    .sort((a, b) => a.distance - b.distance);
 
-  // sort stations by distance
-  stations.sort((a, b) => a.distance - b.distance);
+  const handleLike = () => {
+    if (currentIndex < stations.length - 1) {
+      setCurrentIndex((prev) => prev + 1);
+    }
+  };
 
-  function handleFilterChange(e) {
-    setFilter(e.target.value);
-  }
+  const handleDislike = () => {
+    if (currentIndex < stations.length - 1) {
+      setCurrentIndex((prev) => prev + 1);
+    }
+  };
+
+  const currentStation = stations[currentIndex];
 
   return (
-    <div>
-      <h1 className={styles.title}>Stations</h1>
-      <input type="text" value={filter} onChange={handleFilterChange} />
-      {stations.map((station) => (
-        <div key={station.id}>
-          <Link href={`/stations/${station.id}`}>
-            {station.name}: {station.distance}km
-          </Link>
-        </div>
-      ))}
-    </div>
+    <main className={styles.main}>
+      <h1 className={styles.title}>Ontdek Velo stations in je buurt</h1>
+      {currentStation ? (
+        <StationCard
+          station={currentStation}
+          onLike={handleLike}
+          onDislike={handleDislike}
+        />
+      ) : (
+        <p>Geen stations meer in de buurt.</p>
+      )}
+    </main>
   );
 }
