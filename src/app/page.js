@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import useNetwork from '@/data/network';
 import { getDistance } from '@/helpers/get-distance';
 import StationCard from '@/components/StationCard';
+import StationImage from '@/components/StationImage';
 
 export default function Home() {
   const [location, setLocation] = useState({});
@@ -30,12 +31,18 @@ export default function Home() {
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error loading data</div>;
 
-  if (!location.latitude || !location.longitude) return <div>Locatie ophalen...</div>;
+  if (!location.latitude || !location.longitude)
+    return <div>Locatie ophalen...</div>;
 
   const stations = network.stations
     .map((station) => {
       station.distance =
-        getDistance(location.latitude, location.longitude, station.latitude, station.longitude).distance / 1000;
+        getDistance(
+          location.latitude,
+          location.longitude,
+          station.latitude,
+          station.longitude
+        ).distance / 1000;
       return station;
     })
     .sort((a, b) => a.distance - b.distance);
@@ -56,13 +63,14 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <h1 className={styles.title}>Ontdek Velo stations in je buurt</h1>
       {currentStation ? (
-        <StationCard
-          station={currentStation}
-          onLike={handleLike}
-          onDislike={handleDislike}
-        />
+        <>
+          <StationCard
+            station={currentStation}
+            onLike={handleLike}
+            onDislike={handleDislike}
+          />
+        </>
       ) : (
         <p>Geen stations meer in de buurt.</p>
       )}
