@@ -6,7 +6,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 30px;
+  max-height: 100vh; /* Zorgt ervoor dat de main minimaal de hoogte van het scherm heeft */
+  overflow: hidden; /* Verhindert scrollen binnen de main */
 }
 
 .title {
@@ -14,3 +15,5 @@
   font-weight: bold;
   margin-bottom: 20px;
 }
+
+

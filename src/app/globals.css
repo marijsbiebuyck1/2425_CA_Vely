@@ -1,13 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
+
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 /* globals.css */
@@ -17,15 +19,13 @@ header {
   flex-direction: column; /* Zorgt ervoor dat het logo bovenaan komt */
   justify-content: center; /* Verticaal centreren van het logo */
   align-items: center; /* Horizontaal centreren van het logo */
-  padding: 10px;
   padding-bottom: 0px;
   bottom: 0;
   background-color: #fff;
-  border-bottom: 1px solid #ddd;
 }
 
 .logo-container {
-  margin-bottom: 20px; /* Ruimte tussen het logo en de navigatie */
+  margin-bottom: 0px; /* Ruimte tussen het logo en de navigatie */
 }
 
 main {
@@ -40,7 +40,7 @@ nav {
   bottom: 0;
   width: 100%; /* Maak de navbar zo breed als het scherm */
   background-color: #fff; /* Achtergrondkleur voor de navbar */
-  border-top: 1px solid #ddd; /* Een lichte rand bovenaan de navbar */
+  border-top: 1px solid #fa403d81; /* Een lichte rand bovenaan de navbar */
   padding: 10px 0; /* Padding voor de navbar */
 }
 
@@ -48,3 +48,37 @@ nav a {
   text-decoration: none;
   color: #333;
 }
+
+.navbar {
+  position: fixed;
+  z-index: 1000;
+  background-color: white;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-item {
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  padding-top: 10px;
+}
+
+.icon-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 15px;
+  font-family: "Poppins", sans-serif;
+  color: #FA413D;
+}
+
+.icon-label img {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 7px;
+}
+

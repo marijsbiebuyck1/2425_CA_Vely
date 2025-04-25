@@ -6,6 +6,7 @@ import useNetwork from '@/data/network';
 import { getDistance } from '@/helpers/get-distance';
 import StationCard from '@/components/StationCard';
 import StationImage from '@/components/StationImage';
+import StationControls from '@/components/StationControls';
 
 export default function Home() {
   const [location, setLocation] = useState({});
@@ -67,10 +68,10 @@ export default function Home() {
         <>
           <StationCard
             station={currentStation}
-            onLike={handleLike}
-            onDislike={handleDislike}
           />
+          <StationControls onLike={handleLike} onDislike={handleDislike} />
         </>
+        
       ) : (
         <p>Geen stations meer in de buurt.</p>
       )}
