@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 import useNetwork from '@/data/network';
 import { getDistance } from '@/helpers/get-distance';
 import StationCard from '@/components/StationCard';
-import StationImage from '@/components/StationImage';
 import StationControls from '@/components/StationControls';
 
 export default function Home() {
@@ -48,8 +47,16 @@ export default function Home() {
     })
     .sort((a, b) => a.distance - b.distance);
 
+  // Functie om een station op te slaan in localStorage
   const handleLike = () => {
     if (currentIndex < stations.length - 1) {
+      const station = stations[currentIndex];
+      // Haal de opgeslagen stations op en voeg de nieuwe toe
+      const likedStations = JSON.parse(localStorage.getItem('likedStations')) || [];
+      if (!likedStations.find((likedStation) => likedStation.id === station.id)) {
+        likedStations.push(station);
+        localStorage.setItem('likedStations', JSON.stringify(likedStations));
+      }
       setCurrentIndex((prev) => prev + 1);
     }
   };
@@ -66,12 +73,9 @@ export default function Home() {
     <main className={styles.main}>
       {currentStation ? (
         <>
-          <StationCard
-            station={currentStation}
-          />
+          <StationCard station={currentStation} />
           <StationControls onLike={handleLike} onDislike={handleDislike} />
         </>
-        
       ) : (
         <p>Geen stations meer in de buurt.</p>
       )}

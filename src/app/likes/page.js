@@ -1,17 +1,26 @@
 'use client';
 
-import styles from './page.module.css';
-import useNetwork from '@/data/network';
+import { useState, useEffect } from 'react';
+import StationCard from '@/components/StationCard';
 
-export default function About() {
-  const { network, isLoading, isError } = useNetwork();
+export default function LikesPage() {
+  const [likedStations, setLikedStations] = useState([]);
 
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error</div>;
+  useEffect(() => {
+    const storedLikedStations = JSON.parse(localStorage.getItem('likedStations')) || [];
+    setLikedStations(storedLikedStations);
+  }, []);
 
   return (
-    <div>
-      <h1 className={styles.title}>About {network.name}</h1>
-    </div>
+    <main>
+      <h1>Mijn matches</h1>
+      {likedStations.length > 0 ? (
+        likedStations.map((station) => (
+          <StationCard key={station.id} station={station} />
+        ))
+      ) : (
+        <p>Je hebt nog geen stations geliket.</p>
+      )}
+    </main>
   );
 }
