@@ -1,20 +1,28 @@
-'use client';
-
-import React from 'react';
-import StationImage from './StationImage';
 import styles from './StationCard.module.css';
+import StationImage from './StationImage';
 
 export default function StationCard({ station, onLike, onDislike }) {
   return (
     <div className={styles.card}>
       <StationImage latitude={station.latitude} longitude={station.longitude} />
+      <div className={styles.containerInfo}>
       <div className={styles.info}>
+        {/* De inhoud van de kaart */}
         <h2>{station.name}</h2>
         <p>{station.distance.toFixed(2)} km van jou</p>
         <p>
-        <img src="fiets.svg" alt="fiets" /> {station.free_bikes} | <img src="slotje.svg" alt="slot" />{station.empty_slots}
+          <img src="fiets.svg" alt="fiets" /> {station.free_bikes} |{' '}
+          <img src="slotje.svg" alt="slot" />
+          {station.empty_slots}
         </p>
-        <button className={styles.more}>Meer info</button>
+      </div>
+      {/* De naam van het station en de meer info knop komen onderaan */}
+      <div className={styles.button}>
+        <button className={styles.more}>
+          <img src="pijl.svg" alt="pijl" />
+          Meer
+        </button>
+      </div>
       </div>
     </div>
   );

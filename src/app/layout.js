@@ -41,7 +41,7 @@ export default function RootLayout({ children }) {
              <Link href="/account" className="nav-item">
               <div className="icon-label">
                 <img src="account.svg" alt="Likes" />
-                <span>Likes</span>
+                <span>Account</span>
               </div>
             </Link>
             <Link href="/" className="nav-item">
