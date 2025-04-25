@@ -1,0 +1,60 @@
+.pageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+
+.card {
+  width: 350px;
+  height: 150px;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transform: scale(1);
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column; /* De kaart is een verticale flex-container */
+  align-self: center ;
+  justify-content: center;
+}
+
+.containerInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-right: 10px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.more {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  background: none;
+  font-family: 'Poppins', sans-serif;
+  font-weight:600;
+  font-size: 1rem;
+  color: #0863ae;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px;
+}
+
+.more img {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+}

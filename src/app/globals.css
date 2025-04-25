@@ -10,9 +10,17 @@ html,
 body {
   max-width: 100vw;
   overflow: hidden;
+  font-family: "Poppins", sans;
+  color: #2D2D2D;
 }
 
 /* globals.css */
+
+h1{
+  color:#FA413D;
+  font-weight: 400;
+  text-align: center;
+}
 
 header {
   display: flex;

@@ -1,17 +1,15 @@
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 import Link from 'next/link';
 import Image from 'next/image'; // Import Image component van Next.js
 
 import './globals.css';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+
+const poppins = Poppins({
+  weight: ['400', '600'], // pas aan naar wat je nodig hebt
   subsets: ['latin'],
+  variable: '--font-poppins',
 });
 
 export const metadata = {
@@ -22,7 +20,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${poppins.variable}`}>
         <header>
           {/* Logo boven de navigatie */}
           <div className="logo-container">

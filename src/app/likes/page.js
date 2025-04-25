@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import StationCard from '@/components/StationCard';
+import StationCard from '@/components/LikedCard';
+
 
 export default function LikesPage() {
   const [likedStations, setLikedStations] = useState([]);
@@ -13,7 +14,8 @@ export default function LikesPage() {
 
   return (
     <main>
-      <h1>Mijn matches</h1>
+      <div className="contentWrapper">
+        <h1>Mijn matches</h1></div>
       {likedStations.length > 0 ? (
         likedStations.map((station) => (
           <StationCard key={station.id} station={station} />
