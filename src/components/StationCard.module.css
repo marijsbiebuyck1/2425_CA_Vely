@@ -1,6 +1,6 @@
 .card {
-  width: 350px;
-  height: 550px;
+  width: 90vw;
+  height: 55vh;
   border-radius: 20px;
   overflow: hidden;
   position: relative;
@@ -10,6 +10,7 @@
   transition: transform 0.3s ease-in-out;
   display: flex;
   flex-direction: column; /* De kaart is een verticale flex-container */
+  margin: 20px auto;
 }
 
 .containerInfo {
@@ -47,4 +48,22 @@
   width: 30px;
   height: 30px;
   margin-right: 5px;
+}
+
+
+/* Tablet view (vanaf 768px breedte) */
+@media (min-width: 768px) {
+  .card {
+    max-width: 500px;
+    padding: 20px;
+  }
+}
+
+/* Desktop view (vanaf 1200px breedte) */
+@media (min-width: 1200px) {
+  .card {
+    max-width: 1000px;
+    height: 400px;
+   
+  }
 }

@@ -12,6 +12,18 @@ export default function LikesPage() {
     setLikedStations(storedLikedStations);
   }, []);
 
+  useEffect(() => {
+    // Zet body overflow op auto zodat je kan scrollen op likes pagina
+    document.body.classList.remove('no-scroll');
+    document.body.style.overflow = 'auto';
+
+    return () => {
+      // Wanneer je weg gaat van LikesPage → herstel naar geen scroll
+      document.body.classList.add('no-scroll');
+      document.body.style.overflow = 'hidden';
+    };
+  }, []);
+
   return (
     <main>
       <div className="contentWrapper">

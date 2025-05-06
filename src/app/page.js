@@ -12,6 +12,7 @@ export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { network, isLoading, isError } = useNetwork();
 
+  
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(

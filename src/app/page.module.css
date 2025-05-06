@@ -6,8 +6,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-height: 100vh; /* Zorgt ervoor dat de main minimaal de hoogte van het scherm heeft */
-  overflow: hidden; /* Verhindert scrollen binnen de main */
 }
 
 .title {

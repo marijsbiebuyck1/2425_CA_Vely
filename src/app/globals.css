@@ -9,7 +9,7 @@
 html,
 body {
   max-width: 100vw;
-  overflow: hidden;
+  overflow-x: hidden;
   font-family: "Poppins", sans;
   color: #2D2D2D;
 }
@@ -42,14 +42,15 @@ main {
 
 nav {
   display: flex;
-  justify-content: space-around; /* Verdeel de links gelijkmatig over de breedte */
+  justify-content: space-around;
+  align-items: center;
   gap: 20px;
-  position: fixed; /* Fixeer de navbar aan de onderkant van het scherm */
+  position: fixed;
   bottom: 0;
-  width: 100%; /* Maak de navbar zo breed als het scherm */
-  background-color: #fff; /* Achtergrondkleur voor de navbar */
-  border-top: 1px solid #fa403d81; /* Een lichte rand bovenaan de navbar */
-  padding: 10px 0; /* Padding voor de navbar */
+  width: 100%;
+  background-color: #fff;
+  border-top: 1px solid #fa403d81;
+  padding: 10px 0;
 }
 
 nav a {
@@ -89,4 +90,10 @@ nav a {
   height: 30px;
   margin-bottom: 7px;
 }
+
+
+.no-scroll {
+  overflow: hidden;
+}
+
 

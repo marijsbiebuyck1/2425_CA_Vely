@@ -1,6 +1,8 @@
 import { Poppins } from 'next/font/google';
 import Link from 'next/link';
 import Image from 'next/image'; // Import Image component van Next.js
+import NavBar from '@/components/NavBar';
+
 
 import './globals.css';
 
@@ -34,27 +36,8 @@ export default function RootLayout({ children }) {
             </Link>
           </div>
 
-          {/* Navigatie links */}
-          <nav>
-             <Link href="/account" className="nav-item">
-              <div className="icon-label">
-                <img src="account.svg" alt="Likes" />
-                <span>Account</span>
-              </div>
-            </Link>
-            <Link href="/" className="nav-item">
-              <div className="icon-label">
-                <img src="huisje.svg" alt="Home" />
-                <span>Home</span>
-              </div>
-            </Link>
-            <Link href="/likes" className="nav-item">
-              <div className="icon-label">
-                <img src="hartje.svg" alt="Likes" className="hartje" />
-                <span>Likes</span>
-              </div>
-            </Link>
-          </nav>
+          <NavBar />
+   
         </header>
 
         <main>{children}</main>

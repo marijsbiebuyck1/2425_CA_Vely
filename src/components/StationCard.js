@@ -1,5 +1,9 @@
+"use client";
 import styles from './StationCard.module.css';
 import StationImage from './StationImage';
+
+import Link from "next/link";
+
 
 export default function StationCard({ station, onLike, onDislike }) {
   return (
@@ -17,12 +21,15 @@ export default function StationCard({ station, onLike, onDislike }) {
         </p>
       </div>
       {/* De naam van het station en de meer info knop komen onderaan */}
+     
+      <Link href={`/stations/${station.id}`}>
       <div className={styles.button}>
         <button className={styles.more}>
           <img src="pijl.svg" alt="pijl" />
           Meer
         </button>
       </div>
+      </Link>
       </div>
     </div>
   );

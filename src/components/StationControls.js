@@ -19,7 +19,6 @@ export default function StationControls({ onLike, onDislike }) {
           display: flex;
           justify-content: center;
           gap: 2rem;
-          margin-top: 2rem;
         }
 
         .like img,

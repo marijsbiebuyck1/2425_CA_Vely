@@ -1,3 +1,51 @@
-.title {
-  color: green;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+.stationName {
+  color: #FA413D; /* Rood */
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
 }
+
+/* StationCard.module.css */
+
+/* Container voor de knop in het midden onderaan */
+.buttonContainer {
+  position: absolute;
+  bottom: 100px; /* Zorg ervoor dat het een beetje van de onderkant van de pagina is */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 100%;
+  z-index: 10;
+}
+
+.button {
+  display: flex;
+  flex-direction: column; /* Zet de pijl en de tekst onder elkaar */
+  align-items: center;
+}
+
+.more {
+  background-color: transparent; /* Transparante achtergrond */
+  color: #0863AE;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 10px 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrow {
+  width: 60px; /* Pas de grootte van de pijl aan naar wens */
+  height: auto;
+}
+
+.backText {
+  font-size: 20px; /* Maak de tekst iets kleiner voor "Terug" */
+  text-align: center;
+  margin-top: 5px; /* Ruimte tussen de pijl en de tekst */
+}
+
+
