@@ -1,6 +1,6 @@
 .card {
   width: 90vw;
-  height: 55vh;
+  height: 53vh;
   border-radius: 20px;
   overflow: hidden;
   position: relative;
@@ -11,6 +11,7 @@
   display: flex;
   flex-direction: column; /* De kaart is een verticale flex-container */
   margin: 20px auto;
+  margin-bottom: 50px;
 }
 
 .containerInfo {
@@ -19,7 +20,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  margin-top: auto; /* Zorgt ervoor dat containerInfo naar boven schuift */
+  
 }
 
 .info {
