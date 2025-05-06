@@ -12,7 +12,6 @@ export default function StationImage({ latitude, longitude }) {
         `https://graph.mapillary.com/images?access_token=${process.env.NEXT_PUBLIC_MAPILLARY_TOKEN}&fields=id,thumb_1024_url&bbox=${longitude - 0.0001},${latitude - 0.0001},${longitude + 0.0001},${latitude + 0.0001}&limit=1`
       );
       const data = await response.json();
-      console.log(data); // 👉 check hier wat je terugkrijgt
       const url = data?.data?.[0]?.thumb_1024_url;
       setImageUrl(url);
     }
@@ -23,13 +22,14 @@ export default function StationImage({ latitude, longitude }) {
   if (!imageUrl) return <div>Loading image...</div>;
 
   return (
-    <Image
-      src={imageUrl}
-      alt="Mapillary station"
-      width={300}
-      height={200}
-      className="rounded-lg"
-    />
+    <div className="station-image-wrapper">
+      <Image
+        src={imageUrl}
+        alt="Mapillary station"
+        width={800}
+        height={400}
+        style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
+      />
+    </div>
   );
 }
-

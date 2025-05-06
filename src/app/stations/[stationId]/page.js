@@ -75,10 +75,9 @@ export default function Station() {
 
   return (
     <div className={styles.card}>
-      <StationImage latitude={station.latitude} longitude={station.longitude} />
       <div className={styles.containerInfo}>
         <div className={styles.info}>
-          <h2>{station.name}</h2>
+          <h2 className='stationName'>{station.name}</h2>
           {distance ? (
             <p>{distance.toFixed(2)} km van jou</p>
           ) : (
@@ -89,6 +88,27 @@ export default function Station() {
             <img src="/slotje.svg" alt="slot" />
             {station.empty_slots}
           </p>
+
+          <div className={styles.buttonGroup}>
+  
+        
+<a
+href={`https://www.google.com/maps/dir/?api=1&destination=${station.latitude},${station.longitude}`}
+target="_blank"
+rel="noopener noreferrer"
+className={styles.noLinkStyle}
+>
+  <button className={styles.actionButton}>
+    <img src="/route.svg" alt="route" className={styles.icon} />
+    <span>Route station</span>
+  </button></a>
+  <button className={styles.actionButton}>
+    <img src="/fietsje.svg" alt="fiets" className={styles.icon} />
+    <span>Neem een fiets</span>
+  </button>
+</div>
+
+          <StationImage latitude={station.latitude} longitude={station.longitude} />
         </div>
       </div>
 

@@ -67,3 +67,23 @@
    
   }
 }
+
+.station-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 400px;
+}
+
+.station-content {
+  padding: 16px;
+}
+
+.station-image-wrapper {
+  width: 100%;
+  height: auto;
+  flex-shrink: 0;
+}
+
+

@@ -1,6 +1,7 @@
 "use client";
 import styles from './StationCard.module.css';
 import StationImage from './StationImage';
+import './StationImage.css';
 
 import Link from "next/link";
 
