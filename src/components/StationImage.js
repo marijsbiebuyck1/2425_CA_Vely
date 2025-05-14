@@ -23,13 +23,13 @@ export default function StationImage({ latitude, longitude }) {
 
   return (
     <div className="station-image-wrapper">
-      <Image
-        src={imageUrl}
-        alt="Mapillary station"
-        width={800}
-        height={400}
-        style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
-      />
+<Image
+  src={imageUrl}
+  alt="Mapillary station"
+  fill
+  style={{ objectFit: 'cover' }}
+/>
+
     </div>
   );
 }
