@@ -1,4 +1,5 @@
 import styles from './LikedCard.module.css';
+import Link from 'next/link';
 
 export default function StationCard({ station }) {
   return (
@@ -14,12 +15,14 @@ export default function StationCard({ station }) {
               {station.empty_slots}
             </p>
           </div>
-          <div className={styles.button}>
-            <button className={styles.more}>
-              <img src="pijl.svg" alt="pijl" />
-              Meer
-            </button>
-          </div>
+          <Link href={`/stations/${station.id}`}>
+            <div className={styles.button}>
+              <button className={styles.more}>
+                <img src="pijl.svg" alt="pijl" />
+                Meer
+              </button>
+            </div>
+          </Link>
         </div>
       </div>
     </div>

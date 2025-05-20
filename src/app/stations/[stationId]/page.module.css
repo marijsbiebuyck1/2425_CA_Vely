@@ -101,3 +101,15 @@
   text-decoration: none;
   color: inherit; /* behoud de kleur van de inhoud */
 }
+
+.station-image-wrapper {
+  width: 100%;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid #eee;
+}
+
+.station-image-wrapper.smallImage {
+  height: 180px; /* kleiner voor detailpagina */
+}

@@ -1,9 +1,10 @@
+// StationImage.jsx
 'use client';
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
-export default function StationImage({ latitude, longitude }) {
+export default function StationImage({ latitude, longitude, className = '' }) {
   const [imageUrl, setImageUrl] = useState(null);
 
   useEffect(() => {
@@ -22,14 +23,14 @@ export default function StationImage({ latitude, longitude }) {
   if (!imageUrl) return <div>Loading image...</div>;
 
   return (
-    <div className="station-image-wrapper">
-<Image
-  src={imageUrl}
-  alt="Mapillary station"
-  fill
-  style={{ objectFit: 'cover' }}
-/>
-
+    <div className={`station-image-wrapper ${className}`}>
+      <Image
+        src={imageUrl}
+        alt="Mapillary station"
+        fill
+        style={{ objectFit: 'cover' }}
+      />
     </div>
   );
 }
+

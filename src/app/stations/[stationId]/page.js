@@ -77,7 +77,7 @@ export default function Station() {
     <div className={styles.card}>
       <div className={styles.containerInfo}>
         <div className={styles.info}>
-          <h2 className='stationName'>{station.name}</h2>
+          <h2 className="stationName">{station.name}</h2>
           {distance ? (
             <p>{distance.toFixed(2)} km van jou</p>
           ) : (
@@ -90,41 +90,42 @@ export default function Station() {
           </p>
 
           <div className={styles.buttonGroup}>
-  
-        
-<a
-href={`https://www.google.com/maps/dir/?api=1&destination=${station.latitude},${station.longitude}`}
-target="_blank"
-rel="noopener noreferrer"
-className={styles.noLinkStyle}
->
-  <button className={styles.actionButton}>
-    <img src="/route.svg" alt="route" className={styles.icon} />
-    <span>Route station</span>
-  </button></a>
-  <button className={styles.actionButton}>
-    <img src="/fietsje.svg" alt="fiets" className={styles.icon} />
-    <span>Neem een fiets</span>
-  </button>
-</div>
+            <a
+              href={`https://www.google.com/maps/dir/?api=1&destination=${station.latitude},${station.longitude}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.noLinkStyle}
+            >
+              <button className={styles.actionButton}>
+                <img src="/route.svg" alt="route" className={styles.icon} />
+                <span>Route station</span>
+              </button>
+            </a>
+            <button className={styles.actionButton}>
+              <img src="/fietsje.svg" alt="fiets" className={styles.icon} />
+              <span>Neem een fiets</span>
+            </button>
+          </div>
 
-          <StationImage latitude={station.latitude} longitude={station.longitude} />
+          <StationImage
+            latitude={station.latitude}
+            longitude={station.longitude}
+            className="smallImage"
+          />
         </div>
       </div>
 
       <Link href={`/`}>
-  <div className={styles.buttonContainer}>
-    <div className={styles.button}>
-      <button className={styles.more}>
-        <img src="/terug.svg" alt="pijl" className={styles.arrow} />
-        <span className={styles.backText}>Terug</span> {/* Terug onder de pijl */}
-      </button>
+        <div className={styles.buttonContainer}>
+          <div className={styles.button}>
+            <button className={styles.more}>
+              <img src="/terug.svg" alt="pijl" className={styles.arrow} />
+              <span className={styles.backText}>Terug</span>{' '}
+              {/* Terug onder de pijl */}
+            </button>
+          </div>
+        </div>
+      </Link>
     </div>
-  </div>
-</Link>
-
-    </div>
-
-    
   );
 }

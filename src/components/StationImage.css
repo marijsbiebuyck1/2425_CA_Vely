@@ -1,6 +1,6 @@
 .station-image-wrapper {
   width: 100%;
-  height: 300px; /* of 250px, of wat jij wil */
+  height: 100vh; /* of 250px, of wat jij wil */
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid #eee; /* optioneel, voor visuele afscheiding */
