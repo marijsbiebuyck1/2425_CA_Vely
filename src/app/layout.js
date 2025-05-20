@@ -31,8 +31,8 @@ export default function RootLayout({ children }) {
               <Image
                 src="/logo.svg"
                 alt="Mijn App Logo"
-                width={210}
-                height={110}
+                width={200}
+                height={100}
               />
             </Link>
 
