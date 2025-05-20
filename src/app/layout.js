@@ -1,7 +1,8 @@
 import { Poppins } from 'next/font/google';
 import Link from 'next/link';
 import Image from 'next/image'; // Import Image component van Next.js
-import NavBar from '@/components/NavBar';
+import ToggleSwitch from '@/components/ToggleSwitch';
+
 
 
 import './globals.css';
@@ -34,6 +35,8 @@ export default function RootLayout({ children }) {
                 height={110}
               />
             </Link>
+
+            <ToggleSwitch />
           </div>
 
  

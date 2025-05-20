@@ -7,6 +7,7 @@ import { getDistance } from '@/helpers/get-distance';
 import StationCard from '@/components/StationCard';
 import StationControls from '@/components/StationControls';
 
+
 export default function Home() {
   const [location, setLocation] = useState({});
   const [currentIndex, setCurrentIndex] = useState(0);
