@@ -14,6 +14,7 @@ export default function StationControls({ onLike, onDislike }) {
           border: none;
           padding: 0;
           cursor: pointer;
+          
         }
         .controls {
           display: flex;
@@ -24,7 +25,7 @@ export default function StationControls({ onLike, onDislike }) {
         .like img,
         .dislike img {
           width: 90px;
-          height: 90px;
+          height: 120px;
           cursor: pointer;
           filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
           transition: transform 0.2s ease;

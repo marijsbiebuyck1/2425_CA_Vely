@@ -36,9 +36,7 @@ header {
   margin-bottom: 0px; /* Ruimte tussen het logo en de navigatie */
 }
 
-main {
-  min-height: 100vh; /* Zorgt ervoor dat de main sectie altijd minimaal de hoogte van het scherm heeft */
-}
+
 
 nav {
   display: flex;
