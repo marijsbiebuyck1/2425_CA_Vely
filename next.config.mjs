@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['images.mapillary.com'], // ✅ hier toestaan
+    domains: ['images.mapillary.com'], // of pas aan op basis van echte domein
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;
