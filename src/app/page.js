@@ -31,25 +31,37 @@ export default function Home() {
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error loading data</div>;
-  if (!location.latitude || !location.longitude) return <div>Locatie ophalen...</div>;
+  if (!location.latitude || !location.longitude)
+    return (
+      <div className={styles.radarContainer}>
+        <div className={styles.radar}></div>
+        <p>Locatie ophalen...</p>
+      </div>
+    );
 
   // Bereken afstand tot elk station
   const stations = network.stations
     .map((station) => {
-      station.distance = getDistance(
-        location.latitude,
-        location.longitude,
-        station.latitude,
-        station.longitude
-      ).distance / 1000;
+      station.distance =
+        getDistance(
+          location.latitude,
+          location.longitude,
+          station.latitude,
+          station.longitude
+        ).distance / 1000;
       return station;
     })
     .sort((a, b) => a.distance - b.distance);
 
-  // Haal disliked stations op en filter ze eruit
+  // Haal liked en disliked stations op uit localStorage
+  const likedStations = JSON.parse(localStorage.getItem('likedStations')) || [];
   const dislikedStations = JSON.parse(localStorage.getItem('dislikedStations')) || [];
+
+  // Filter stations die al geliked of disliked zijn eruit
   const filteredStations = stations.filter(
-    (station) => !dislikedStations.some((ds) => ds.id === station.id)
+    (station) =>
+      !dislikedStations.some((ds) => ds.id === station.id) &&
+      !likedStations.some((ls) => ls.id === station.id)
   );
 
   const currentStation = filteredStations[currentIndex];
