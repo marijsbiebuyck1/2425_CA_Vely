@@ -24,12 +24,12 @@ export default function StationImage({ latitude, longitude, className = '' }) {
 
   return (
     <div className={`station-image-wrapper ${className}`}>
-      <Image
-        src={imageUrl}
-        alt="Mapillary station"
-        fill
-        style={{ objectFit: 'cover' }}
-      />
+      <img
+  src={imageUrl}
+  alt="Mapillary station"
+  className="station-image"
+  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+/>
     </div>
   );
 }
