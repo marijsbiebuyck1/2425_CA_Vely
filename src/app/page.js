@@ -7,13 +7,12 @@ import { getDistance } from '@/helpers/get-distance';
 import StationCard from '@/components/StationCard';
 import StationControls from '@/components/StationControls';
 
-
 export default function Home() {
   const [location, setLocation] = useState({});
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [feedback, setFeedback] = useState(null);
   const { network, isLoading, isError } = useNetwork();
 
-  
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -26,56 +25,76 @@ export default function Home() {
         (error) => console.error(error)
       );
     } else {
-      console.error('Geolocation is not supported by this browser.');
+      console.error('Geolocatie wordt niet ondersteund.');
     }
   }, []);
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error loading data</div>;
+  if (!location.latitude || !location.longitude) return <div>Locatie ophalen...</div>;
 
-  if (!location.latitude || !location.longitude)
-    return <div>Locatie ophalen...</div>;
-
+  // Bereken afstand tot elk station
   const stations = network.stations
     .map((station) => {
-      station.distance =
-        getDistance(
-          location.latitude,
-          location.longitude,
-          station.latitude,
-          station.longitude
-        ).distance / 1000;
+      station.distance = getDistance(
+        location.latitude,
+        location.longitude,
+        station.latitude,
+        station.longitude
+      ).distance / 1000;
       return station;
     })
     .sort((a, b) => a.distance - b.distance);
 
-  // Functie om een station op te slaan in localStorage
+  // Haal disliked stations op en filter ze eruit
+  const dislikedStations = JSON.parse(localStorage.getItem('dislikedStations')) || [];
+  const filteredStations = stations.filter(
+    (station) => !dislikedStations.some((ds) => ds.id === station.id)
+  );
+
+  const currentStation = filteredStations[currentIndex];
+
   const handleLike = () => {
-    if (currentIndex < stations.length - 1) {
-      const station = stations[currentIndex];
-      // Haal de opgeslagen stations op en voeg de nieuwe toe
+    if (currentIndex < filteredStations.length) {
+      const station = filteredStations[currentIndex];
       const likedStations = JSON.parse(localStorage.getItem('likedStations')) || [];
-      if (!likedStations.find((likedStation) => likedStation.id === station.id)) {
+
+      if (!likedStations.find((s) => s.id === station.id)) {
         likedStations.push(station);
         localStorage.setItem('likedStations', JSON.stringify(likedStations));
       }
-      setCurrentIndex((prev) => prev + 1);
+
+      setFeedback('like');
+      setTimeout(() => {
+        setFeedback(null);
+        setCurrentIndex((prev) => prev + 1);
+      }, 800);
     }
   };
 
   const handleDislike = () => {
-    if (currentIndex < stations.length - 1) {
-      setCurrentIndex((prev) => prev + 1);
+    if (currentIndex < filteredStations.length) {
+      const station = filteredStations[currentIndex];
+      const dislikedStations = JSON.parse(localStorage.getItem('dislikedStations')) || [];
+
+      if (!dislikedStations.find((s) => s.id === station.id)) {
+        dislikedStations.push(station);
+        localStorage.setItem('dislikedStations', JSON.stringify(dislikedStations));
+      }
+
+      setFeedback('dislike');
+      setTimeout(() => {
+        setFeedback(null);
+        setCurrentIndex((prev) => prev + 1);
+      }, 800);
     }
   };
-
-  const currentStation = stations[currentIndex];
 
   return (
     <main className={styles.main}>
       {currentStation ? (
         <>
-          <StationCard station={currentStation} />
+          <StationCard station={currentStation} feedback={feedback} />
           <StationControls onLike={handleLike} onDislike={handleDislike} />
         </>
       ) : (

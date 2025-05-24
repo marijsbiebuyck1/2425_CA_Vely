@@ -11,14 +11,14 @@
     padding: 8px 16px;
     font-size: 16px;
     border: none;
-    background-color: #fb403e;
-    color: white;
+    background-color: #ffffff;
+    color: #fb403e;
     cursor: pointer;
     transition: all 0.3s ease;
   }
   
   .toggle-button.active {
-    background-color: white;
-    color: #fb403e;
+    background-color: #fb403e;
+    color: #ffffff;
   }
   

@@ -3,7 +3,6 @@
 import styles from './page.module.css';
 import useNetwork from '@/data/network';
 import { useParams } from 'next/navigation';
-import StationImage from '@/components/StationImage';
 import { useEffect, useState } from 'react';
 
 import Link from 'next/link';
@@ -107,11 +106,7 @@ export default function Station() {
             </button>
           </div>
 
-          <StationImage
-            latitude={station.latitude}
-            longitude={station.longitude}
-            className="smallImage"
-          />
+          
         </div>
       </div>
 
