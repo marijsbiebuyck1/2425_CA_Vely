@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['images.mapillary.com'], // of pas aan op basis van echte domein
+    domains: ['scontent-bru2-1.xx.fbcdn.net'],
   },
 };
 
